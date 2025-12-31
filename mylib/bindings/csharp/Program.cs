@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 internal static class MyLib
 {
-    [DllImport("mylib.dll", CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("mylib", CallingConvention = CallingConvention.Cdecl)]
     internal static extern Int32 mylib_add_i32(Int32 a, Int32 b);
 }
 

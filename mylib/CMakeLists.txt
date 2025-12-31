@@ -18,6 +18,8 @@ set_target_properties(mylib PROPERTIES
 # ---- install layout: dist/bin + dist/include ----
 install(TARGETS mylib
   RUNTIME DESTINATION bin
+  LIBRARY DESTINATION bin
+  ARCHIVE DESTINATION lib
 )
 
 install(FILES

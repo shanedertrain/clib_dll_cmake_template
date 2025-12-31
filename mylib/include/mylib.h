@@ -2,13 +2,21 @@
 
 #include <stdint.h>
 
-#if defined(MYLIB_BUILDING)
-  #define MYLIB_API __declspec(dllexport)
+#if defined(_WIN32)
+  #if defined(MYLIB_BUILDING)
+    #define MYLIB_API __declspec(dllexport)
+  #else
+    #define MYLIB_API __declspec(dllimport)
+  #endif
+  #define MYLIB_CALL __cdecl
 #else
-  #define MYLIB_API __declspec(dllimport)
+  #if defined(MYLIB_BUILDING)
+    #define MYLIB_API __attribute__((visibility("default")))
+  #else
+    #define MYLIB_API
+  #endif
+  #define MYLIB_CALL
 #endif
-
-#define MYLIB_CALL __cdecl
 
 #ifdef __cplusplus
 extern "C" {

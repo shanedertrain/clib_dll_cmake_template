@@ -8,8 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\dist\bin\mylib.dll">
+    <None Include="..\..\dist\bin\mylib.dll" Condition=" '$(OS)' == 'Windows_NT' ">
       <Link>mylib.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\dist\bin\libmylib.so" Condition=" '$(OS)' != 'Windows_NT' ">
+      <Link>libmylib.so</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\dist\lib\libmylib.so" Condition=" '$(OS)' != 'Windows_NT' ">
+      <Link>libmylib.so</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
